@@ -1,14 +1,9 @@
 <script>
   import { onMount, tick } from "svelte"
   import { fabric } from "fabric"
-  import { chunk, forEach, defer, debounce } from "lodash-es"
+  import { debounce } from "lodash-es"
 
-  import {
-    Card,
-    width as card_group_width,
-    height as card_group_height,
-  } from "./lib/fabric/card"
-  import { draw_cards, clear, redraw } from "./lib/fabric/canvas"
+  import { clear, redraw } from "./lib/fabric/canvas"
 
   export let profiles
 
