@@ -6,7 +6,7 @@ import {
   height as card_group_height,
 } from "./card"
 
-const padding = 5
+const padding = 15
 const card_width = card_group_width + 2 * padding
 const card_height = card_group_height + 2 * padding
 
