@@ -36,19 +36,21 @@
     </div>
     <div class="sidebar">
       <input bind:value={search} placeholder="Search members ..." />
+
+      <div class="message">
+        {"Double click on the card to visit github page."}
+      </div>
     </div>
   {/if}
 </main>
 
 <style>
   .holder {
-    height: 90%;
+    height: 89%;
     margin: 2rem;
 
     display: flex;
     flex-direction: row;
-
-    border: thin solid #aaf;
   }
 
   .board {
@@ -57,5 +59,31 @@
 
   .sidebar {
     width: 25%;
+  }
+
+  input {
+    display: block;
+    border-radius: 10px;
+
+    background: #f8fafc;
+    color: black;
+    padding: 4px;
+    margin: 4px auto;
+    border: thin solid #64748b;
+    font-size: 16px;
+
+    width: 250px;
+    height: 30px;
+  }
+
+  .message {
+    font-size: 14px;
+    font-style: italic;
+    color: #64748b;
+
+    margin: 2px;
+    padding: 4px;
+
+    text-align: center;
   }
 </style>

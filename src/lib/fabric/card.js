@@ -12,8 +12,8 @@ export const Card = fabric.util.createClass(fabric.Group, {
       left: -100,
       width,
       height,
-      stroke: "rgba(0,0,255,1.0)",
-      fill: "",
+      stroke: "#CBD5E1",
+      fill: "#F8FAFC",
     })
 
     const avatar = new fabric.Rect({
@@ -37,19 +37,20 @@ export const Card = fabric.util.createClass(fabric.Group, {
       height: 50,
       hasBorders: true,
       subTargetCheck: true,
+      fill: "#F8FAFC",
     })
 
     this.on("mouseover", function (e) {
-      this.item(0).set("stroke", "#aaf")
-      this.item(0).set("fill", "#aaf")
+      this.item(0).set("stroke", "#475569")
+      this.item(0).set("fill", "#EEF2FF")
       if (e.target) {
         e.target.canvas.renderAll()
       }
     })
 
     this.on("mouseout", function (e) {
-      this.item(0).set("stroke", "rgba(0,0,255,1.0)")
-      this.item(0).set("fill", "transparent")
+      this.item(0).set("stroke", "#CBD5E1")
+      this.item(0).set("fill", "#F8FAFC")
       if (e.target) {
         e.target.canvas.renderAll()
       }

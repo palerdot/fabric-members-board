@@ -137,6 +137,21 @@
   }
 
   canvas {
-    border: thin solid #aaf;
+    border: thin solid #94a3b8;
+    border-radius: 5px;
+  }
+
+  button {
+    padding: 4px 8px;
+    margin: 4px;
+
+    background: #475569;
+    border-radius: 5px;
+    border: thin solid #64748b;
+  }
+
+  button:hover {
+    cursor: pointer;
+    background: #64748b;
   }
 </style>
