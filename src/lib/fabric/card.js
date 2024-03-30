@@ -21,22 +21,16 @@ export const Card = fabric.util.createClass(fabric.Group, {
       left: -100,
       width: 50,
       height: 50,
-      fill: "#aaf",
+      fill: "transparent",
     })
 
     const name = new fabric.Text(options.name || "hello world", {
-      fontSize: 20,
-      top: -150,
+      fontSize: 18,
+      top: -140,
       left: -40,
     })
 
-    const handle = new fabric.Text(options.handle || "@palerdot", {
-      fontSize: 15,
-      top: -120,
-      left: -40,
-    })
-
-    this.callSuper("initialize", [border, avatar, name, handle], {
+    this.callSuper("initialize", [border, avatar, name], {
       top: options.top,
       left: options.left,
       width: 200,
@@ -67,9 +61,9 @@ export const Card = fabric.util.createClass(fabric.Group, {
 
     // load image after it is loaded
     fabric.Image.fromURL(
-      "https://avatars.githubusercontent.com/u/102812?v=4",
+      options.image_url || "https://avatars.githubusercontent.com/u/102812?v=4",
       img => {
-        const img_avatar = img.scale(0.125).set({
+        const img_avatar = img.scale(0.1).set({
           top: -25,
           left: -100,
         })

@@ -10,35 +10,12 @@
   } from "./lib/fabric/card"
   import { draw_cards, clear, redraw } from "./lib/fabric/canvas"
 
+  export let profiles
+
   let holder_elem
 
   let canvas_width = 500
   let canvas_height = 400
-
-  const padding = 5
-  const card_width = card_group_width + 2 * padding
-  const card_height = card_group_height + 2 * padding
-
-  const profiles = [
-    {
-      name: "Arun",
-      handle: "@palerdot",
-      url: "https://palerdot.in",
-    },
-    {
-      name: "Kumar",
-      handle: "@initdot",
-      url: "https://github.com/palerdot",
-    },
-    {
-      name: "amaidhi",
-      handle: "@initdot",
-      url: "https://github.com/palerdot",
-    },
-  ]
-
-  // $: columns = Math.floor(canvas_width / card_width)
-  // $: rows = chunk(profiles, columns)
 
   let canvas
 
@@ -97,79 +74,41 @@
     })
   }
 
-  const stub_redraw = debounce(() => {
-    if (!canvas) {
-      return
-    }
-    console.log("porumai ... stub redraw ")
-    redraw({
-      canvas,
-      profiles,
-      width: canvas_width,
-      height: canvas_height,
-    })
-  }, 314)
+  //
+  const canvas_redraw = debounce(
+    ({ canvas, profiles, canvas_width, canvas_height }) => {
+      if (!canvas) {
+        return
+      }
 
-  // function draw_cards() {
-  //   forEach(rows, (row_cards, row) => {
-  //     forEach(row_cards, (info, column) => {
-  //       const card = new Card({
-  //         top: row * card_height + padding,
-  //         left: column * card_width + padding,
-  //         ...info,
-  //       })
-
-  //       canvas.add(card)
-  //     })
-  //   })
-  // }
-
-  // function clear() {
-  //   canvas.clear()
-
-  //   defer(() => {
-  //     canvas.renderAll()
-  //   })
-  // }
-
-  // function redraw() {
-  //   clear()
-
-  //   defer(() => {
-  //     canvas.renderAll()
-  //     draw_cards()
-  //   })
-  // }
+      redraw({
+        canvas,
+        profiles,
+        width: canvas_width,
+        height: canvas_height,
+      })
+    },
+    314
+  )
 
   onMount(() => {
     const rect = holder_elem.getBoundingClientRect()
     canvas_width = rect.width
     canvas_height = rect.height
+
     tick().then(() => {
       initCanvas()
     })
-    // observe dimension changes
-    // var ro = new ResizeObserver(entries => {
-    //   for (let entry of entries) {
-    //     const cr = entry.contentRect
-
-    //     console.log("Element:", entry.target, canvas)
-    //     console.log(`Element size: ${cr.width}px x ${cr.height}px`)
-    //     console.log(`Element padding: ${cr.top}px ; ${cr.left}px`)
-
-    //     canvas_width = cr.width
-    //     canvas_height = cr.height
-    //   }
-    // })
-
-    // // Observe one or multiple elements
-    // ro.observe(holder_elem)
   })
 
   $: {
     tick().then(() => {
-      // console.log("porumai ... canvas ", canvas_width, canvas_height)
-      stub_redraw()
+      canvas_redraw({
+        canvas,
+        profiles,
+        canvas_width,
+        canvas_height,
+      })
     })
   }
 </script>
@@ -192,6 +131,11 @@
 </main>
 
 <style>
+  main {
+    width: 100%;
+    height: 100%;
+  }
+
   canvas {
     border: thin solid #aaf;
   }
