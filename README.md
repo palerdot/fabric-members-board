@@ -1,5 +1,7 @@
 # Fabric Members Board
 
+[Demo Link](https://palerdot.in/fabric-members-board/)
+
 This repo contains an example canvas board created with fabric js that displays members of github organization in an interactive canvas.
 
 ### Running locally
